@@ -1,23 +1,15 @@
-/* only 1 parameter allowed, should be called props */
-/*
-function CoreConcept(props) {
-  return (
-    <li>
-      <img src={props.image} alt={props.alt} />
-      <h3>{props.title}</h3>
-      <p>{props.description}</p>
-    </li>
-  );
-}
-*/
+import CoreConcept from "./CoreConcept.jsx";
+import { CORE_CONCEPTS } from "../data.js";
 
-/* here we are using destructuring */
-export default function CoreConcept({image, title, description}) {
+export default function CoreConcepts() {
     return (
-      <li>
-        <img src={image} alt={title} />
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </li>
+        <section id="core-concepts">
+            <h2>Core concepts</h2>
+            <ul>
+            {CORE_CONCEPTS.map((conceptItem) => {
+                return <CoreConcept key={conceptItem.title} {...conceptItem} />
+            })}
+            </ul>
+        </section>
     );
-  }
+}
